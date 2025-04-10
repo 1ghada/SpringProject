@@ -1,0 +1,43 @@
+<div class="container mt-5">
+   <div class="row justify-content-center">
+     <!-- Colonne centrée pour le contenu -->
+     <div class="col-12 col-md-10 col-lg-8">
+       <div class="text-center">
+         <h3 class="display-6 mt-4 mb-4" style="font-weight: bold;">Liste des catégories</h3>
+       </div>
+ 
+       
+         <div class="table-responsive">
+           <table class="table table-striped table-bordered text-center">
+             <thead class="table-dark">
+               <tr>
+                 <th>nom</th>
+                 <th>contact</th>
+                 <th>note</th>
+                
+               </tr>
+             </thead>
+             <tbody>
+               <tr *ngFor="let categorie of fournisseurs">
+                 <td>{{ categorie.nom }}</td>
+                 <td>{{ categorie.contact }}</td>
+                 <td>{{ categorie.note }}</td>
+                 <td>
+                  <button class="btn btn-primary me-2" [routerLink]="['/accordion', categorie._id]">
+                     Modifier
+                   </button>
+                   
+                   <button class="btn btn-danger">
+                     Supprimer
+                   </button>
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+       </div>
+ 
+     </div>
+   </div>
+ 
+ 

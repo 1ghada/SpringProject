@@ -1,0 +1,29 @@
+<div class="container mt-5">
+   <div class="row justify-content-center">
+     <div class="col-12 col-md-10 col-lg-8">
+       <div class="text-center">
+         <h3 class="display-6 mt-4 mb-4" style="font-weight: bold;">Détails du Fournisseur</h3>
+       </div>
+      
+         <div *ngIf="fournisseur; else noData">
+           <p><strong>Nom :</strong> {{ fournisseur.nom }}</p>
+           <p><strong>Contact :</strong> {{ fournisseur.contact }}</p>
+           <p><strong>Qualité du Service :</strong> {{ fournisseur.qualiteService }}</p>
+           <p><strong>Note :</strong> {{ fournisseur.note }}</p>
+           
+           <div class="text-center mt-4">
+             
+           </div>
+         </div>
+         <ng-template #noData>
+           <div class="text-center">
+             <p>Aucune information disponible.</p>
+           </div>
+         </ng-template>
+         <div class="text-center mt-4">
+           <button nz-button nzType="default" routerLink="/tables-data">Retour</button>
+         </div>
+       
+     </div>
+   </div>
+</div>

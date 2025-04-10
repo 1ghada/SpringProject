@@ -1,0 +1,90 @@
+<main id="main" class="main">
+<div class="container mt-5">
+   <h2>Ajouter un Historique d'Achat</h2>
+   
+   <!-- Sélection de la Ligne de Commande -->
+   <div class="form-group mb-3">
+       <label for="ligneCommandeId">Ligne de Commande</label>
+       <select
+           id="ligneCommandeId"
+           class="form-control"
+           [(ngModel)]="historiqueAchat.ligneCommande"
+           name="ligneCommande"
+           (change)="onLigneCommandeChange()"
+           required
+       >
+           <option value="" disabled selected>Sélectionner une ligne de commande</option>
+           <option *ngFor="let ligne of lignesCommande" [ngValue]="ligne">
+               {{ ligne.id }} - {{ ligne.produit}}
+           </option>
+       </select>
+   </div>
+
+   <form (ngSubmit)="createHistoriqueAchat()" #historiqueAchatForm="ngForm" class="needs-validation" novalidate>
+
+       <!-- Produit (Auto-rempli) -->
+<div class="form-group mb-3">
+   <label for="produit">Produit</label>
+   <input
+       type="text"
+       id="produit"
+       class="form-control"
+       [(ngModel)]="historiqueAchat.produit"
+       name="produit"
+       required
+       readonly
+   />
+</div>
+
+
+       <!-- Quantité (Auto-rempli) -->
+       <div class="form-group mb-3">
+           <label for="quantite">Quantité</label>
+           <input
+               type="number"
+               id="quantite"
+               class="form-control"
+               [(ngModel)]="historiqueAchat.quantite"
+               name="quantite"
+               required
+               readonly
+           />
+       </div>
+
+       <!-- Fournisseur (Auto-rempli) -->
+       <div class="form-group mb-3">
+           <label for="fournisseur">Fournisseur</label>
+           <input
+               type="text"
+               id="fournisseur"
+               class="form-control"
+               [(ngModel)]="historiqueAchat.fournisseur.nom"
+               name="fournisseur"
+               required
+               readonly
+           />
+       </div>
+
+       <!-- Délai de Livraison -->
+       <div class="form-group mb-3">
+           <label for="delaiLivraison">Délai de Livraison</label>
+           <input
+               type="text"
+               id="delaiLivraison"
+               class="form-control"
+               [(ngModel)]="historiqueAchat.delaiLivraison"
+               name="delaiLivraison"
+               required
+               placeholder="Délai de Livraison"
+           />
+       </div>
+
+       <!-- Boutons -->
+       <div class="form-group mb-3">
+           <button type="submit" class="btn btn-primary btn-lg w-100">Ajouter Historique</button>
+       </div>
+   </form>
+
+   
+</div>
+</main>

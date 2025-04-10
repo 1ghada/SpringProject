@@ -1,0 +1,81 @@
+<main id="main" class="main">
+<div class="container mt-5">
+   <h2 class="mb-4">Ajouter une commande</h2>
+   
+   <!-- Formulaire -->
+   <form (ngSubmit)="onSubmit()" #commandeForm="ngForm" class="needs-validation" novalidate>
+     <!-- Fournisseur -->
+     <div class="form-group mb-3">
+      <label for="fournisseur">Fournisseur</label>
+      <select
+        id="fournisseur"
+        class="form-control"
+        [(ngModel)]="commande.fournisseur.id"
+        name="fournisseur"
+        required
+      >
+        <option value="" disabled selected>Choisir un fournisseur</option>
+        <option *ngFor="let fournisseur of fournisseurs" [value]="fournisseur.id">
+          {{ fournisseur.nom }}
+        </option>
+      </select>
+    </div>
+ 
+     <!-- Date de commande -->
+     <div class="form-group mb-3">
+       <label for="dateCommande">Date de commande</label>
+       <input
+         type="date"
+         id="dateCommande"
+         class="form-control"
+         [(ngModel)]="commande.dateCommande"
+         name="dateCommande"
+         required
+       />
+     </div>
+ 
+     <!-- Statut -->
+     <div class="form-group mb-3">
+       <label for="statut">Statut</label>
+       <select
+         id="statut"
+         class="form-control"
+         [(ngModel)]="commande.statut"
+         name="statut"
+         required
+       >
+         <option value="en_attente">En attente</option>
+         <option value="validee">Validée</option>
+         <option value="annulee">Annulée</option>
+       </select>
+     </div>
+ 
+     <!-- Montant -->
+     <div class="form-group mb-3">
+       <label for="montant">Montant</label>
+       <input
+         type="number"
+         id="montant"
+         class="form-control"
+         [(ngModel)]="commande.montant"
+         name="montant"
+         required
+         placeholder="Montant total"
+       />
+     </div>
+ 
+     <!-- Bouton -->
+     <div class="form-group mb-3">
+       <button type="submit" class="btn btn-success btn-lg w-100">
+         Ajouter la commande
+       </button>
+     </div>
+   </form>
+ 
+   <!-- Alertes / Messages d'erreur -->
+   <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+     <strong>Erreur !</strong> {{ errorMessage }}
+   </div>
+ </div>
+</main>
+ 

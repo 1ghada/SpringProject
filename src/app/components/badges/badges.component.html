@@ -1,0 +1,81 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+     <h1>Modification du Fournisseur</h1>
+     <nav>
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+         <li class="breadcrumb-item"><a routerLink="/fournisseurs">Fournisseurs</a></li>
+         <li class="breadcrumb-item active">Modifier Fournisseur</li>
+       </ol>
+     </nav>
+   </div>
+ 
+   <section class="section">
+     <div class="row">
+       <div class="col-lg-12">
+         <div class="card">
+           <div class="card-body">
+             <h5 class="card-title">Modifier le Fournisseur</h5>
+             <form (ngSubmit)="saveFournisseur()">
+               <div class="mb-3">
+                 <label for="nom" class="form-label">Nom</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="nom"
+                   [(ngModel)]="fournisseur.nom"
+                   name="nom"
+                   required
+                 />
+               </div>
+ 
+               <div class="mb-3">
+                 <label for="contact" class="form-label">Contact</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="contact"
+                   [(ngModel)]="fournisseur.contact"
+                   name="contact"
+                   required
+                 />
+               </div>
+ 
+               <div class="mb-3">
+                 <label for="qualiteService" class="form-label">Qualité du Service</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="qualiteService"
+                   [(ngModel)]="fournisseur.qualiteService"
+                   name="qualiteService"
+                   required
+                 />
+               </div>
+ 
+               <div class="mb-3">
+                 <label for="note" class="form-label">Note</label>
+                 <input
+                   type="number"
+                   class="form-control"
+                   id="note"
+                   [(ngModel)]="fournisseur.note"
+                   name="note"
+                   required
+                 />
+               </div>
+ 
+               
+ 
+               <div class="text-center mt-4">
+                 <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                 <a [routerLink]="['/fournisseurs']" class="btn btn-secondary">Annuler</a>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+ </main>
+ 

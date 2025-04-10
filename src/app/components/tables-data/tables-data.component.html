@@ -1,0 +1,57 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+     <h1>Gestion des Fournisseurs</h1>
+     <nav>
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+         <li class="breadcrumb-item">Tables</li>
+         <li class="breadcrumb-item active">Fournisseurs</li>
+       </ol>
+     </nav>
+   </div>
+   
+   <section class="section">
+     <div class="row">
+       <div class="col-lg-12">
+         <div class="card">
+           <div class="card-body">
+             <h5 class="card-title">Liste des Fournisseurs</h5>
+             <p>Voici la liste des fournisseurs. Vous pouvez consulter leurs détails, les modifier ou les supprimer.</p>
+
+             <!-- Table des Fournisseurs -->
+             <table class="table">
+               <thead>
+                 <tr>
+                   <th scope="col">#</th>
+                   <th scope="col">Nom</th>
+                   <th scope="col">Contact</th>
+                   <th scope="col">Qualité du Service</th>
+                   <th scope="col">Note</th>
+                   <th scope="col">Actions</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr *ngFor="let fournisseur of fournisseurs; let i = index">
+                   <th scope="row">{{ i + 1 }}</th>
+                   <td>{{ fournisseur.nom }}</td>
+                   <td>{{ fournisseur.contact }}</td>
+                   <td>{{ fournisseur.qualiteService }}</td>
+                   <td>{{ fournisseur.note }}</td>
+                   <td>
+                     <button class="btn btn-info" (click)="viewFournisseur(fournisseur.id)">Détails</button>
+                     <button class="btn btn-primary" (click)="editFournisseur(fournisseur)">Modifier</button>
+                     <button class="btn btn-danger" (click)="deleteFournisseur(fournisseur.id)">Supprimer</button>
+                   </td>
+                 </tr>
+                 <!-- Si aucune donnée n'est présente, affiche un message -->
+                 <tr *ngIf="fournisseurs.length === 0">
+                   <td colspan="6" class="text-center">Aucun fournisseur trouvé.</td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+ </main>

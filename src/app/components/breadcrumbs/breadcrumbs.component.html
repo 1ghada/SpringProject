@@ -1,0 +1,64 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+     <h1>Ajouter un Fournisseur</h1>
+     <nav>
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+         <li class="breadcrumb-item"><a routerLink="/fournisseurs">Fournisseurs</a></li>
+         <li class="breadcrumb-item active">Ajouter</li>
+       </ol>
+     </nav>
+   </div>
+
+   <section class="section">
+     <div class="row">
+       <div class="col-lg-12">
+         <div class="card">
+           <div class="card-body">
+             <h5 class="card-title">Formulaire d'Ajout du Fournisseur</h5>
+
+             <!-- Formulaire de création -->
+             <form [formGroup]="fournisseurForm" (ngSubmit)="onSubmit()">
+               <div class="mb-3">
+                 <label for="nom" class="form-label">Nom</label>
+                 <input type="text" id="nom" class="form-control" formControlName="nom" required>
+                 <div *ngIf="fournisseurForm.get('nom')?.invalid && fournisseurForm.get('nom')?.touched" class="text-danger">
+                   <small>Le nom est requis.</small>
+                 </div>
+               </div>
+
+               <div class="mb-3">
+                 <label for="contact" class="form-label">Contact</label>
+                 <input type="text" id="contact" class="form-control" formControlName="contact" required>
+                 <div *ngIf="fournisseurForm.get('contact')?.invalid && fournisseurForm.get('contact')?.touched" class="text-danger">
+                   <small>Le contact doit contenir exactement 8 chiffres.</small>
+                 </div>
+               </div>
+
+               <div class="mb-3">
+                 <label for="qualiteService" class="form-label">Qualité du Service</label>
+                 <input type="text" id="qualiteService" class="form-control" formControlName="qualiteService" required>
+                 <div *ngIf="fournisseurForm.get('qualiteService')?.invalid && fournisseurForm.get('qualiteService')?.touched" class="text-danger">
+                   <small>La qualité du service est requise.</small>
+                 </div>
+               </div>
+
+               <div class="mb-3">
+                 <label for="note" class="form-label">Note</label>
+                 <input type="number" id="note" class="form-control" formControlName="note" required min="1" max="5">
+                 <div *ngIf="fournisseurForm.get('note')?.invalid && fournisseurForm.get('note')?.touched" class="text-danger">
+                   <small>La note doit être entre 1 et 5.</small>
+                 </div>
+               </div>
+
+               <div class="text-center">
+                 <button type="submit" class="btn btn-primary" [disabled]="!fournisseurForm.valid">Ajouter Fournisseur</button>
+                 <a routerLink="/fournisseurs" class="btn btn-secondary">Annuler</a>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+</main>

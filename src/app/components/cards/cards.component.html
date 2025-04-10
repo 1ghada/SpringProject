@@ -1,0 +1,89 @@
+<div class="container mt-5">
+   <h2 class="mb-4">Modifier la commande</h2>
+   
+   <!-- Formulaire -->
+   <form (ngSubmit)="onSubmit()" #commandeForm="ngForm" class="needs-validation" novalidate>
+     <!-- ID de la commande (readonly) -->
+     <div class="form-group mb-3">
+       <label for="commandeId">ID de la commande</label>
+       <input
+         type="text"
+         id="commandeId"
+         class="form-control"
+         [(ngModel)]="commande.id"
+         name="id"
+         required
+         readonly
+         placeholder="ID automatique"
+       />
+     </div>
+ 
+     <!-- Fournisseur -->
+     <div class="form-group mb-3">
+       <label for="fournisseur">Fournisseur</label>
+       <select
+         id="fournisseur"
+         class="form-control"
+         [(ngModel)]="commande.fournisseur.id"
+         name="fournisseur"
+         required
+       >
+         <option value="" disabled selected>Choisir un fournisseur</option>
+         <option *ngFor="let fournisseur of fournisseurs" [value]="fournisseur.id">
+           {{ fournisseur.nom }}
+         </option>
+       </select>
+     </div>
+ 
+     <!-- Date de commande -->
+     <div class="form-group mb-3">
+       <label for="dateCommande">Date de commande</label>
+       <input
+         type="date"
+         id="dateCommande"
+         class="form-control"
+         [(ngModel)]="commande.dateCommande"
+         name="dateCommande"
+         required
+       />
+     </div>
+     <div class="form-group mb-3">
+      <label for="dateCommande">Date de commande</label>
+      <input
+        type="text"
+        id="dateCommande"
+        class="form-control"
+        [(ngModel)]="commande.statut"
+        name="dateCommande"
+        required
+      />
+    </div>
+ 
+     <!-- Montant -->
+     <div class="form-group mb-3">
+       <label for="montant">Montant</label>
+       <input
+         type="number"
+         id="montant"
+         class="form-control"
+         [(ngModel)]="commande.montant"
+         name="montant"
+         required
+         placeholder="Montant total"
+       />
+     </div>
+ 
+     <!-- Boutons -->
+     <div class="form-group mb-3">
+       <button type="submit" class="btn btn-primary btn-lg w-100" >
+         Enregistrer les modifications
+       </button>
+     </div>
+   </form>
+ 
+   <!-- Alertes / Messages d'erreur -->
+   <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+     <strong>Erreur !</strong> {{ errorMessage }}
+   </div>
+ </div>
+ 
