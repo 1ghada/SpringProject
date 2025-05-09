@@ -39,7 +39,11 @@ import { PagesLoginComponent } from './pages/pages-login/pages-login.component';
 import { PagesError404Component } from './pages/pages-error404/pages-error404.component';
 import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';  // <-- Assure-toi d'importer FormsModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+ // <-- Assure-toi d'importer FormsModule
 
 @NgModule({
   declarations: [
@@ -85,7 +89,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';  // <-- Assur
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

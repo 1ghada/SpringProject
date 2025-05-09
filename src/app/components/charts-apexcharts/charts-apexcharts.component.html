@@ -1,34 +1,33 @@
 <main id="main" class="main">
-    <div class="pagetitle">
-       <h1>ApexCharts</h1>
-       <nav>
-          <ol class="breadcrumb">
-             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-             <li class="breadcrumb-item">Charts</li>
-             <li class="breadcrumb-item active">ApexCharts</li>
-          </ol>
-       </nav>
-    </div>
-    <p>ApexCharts Examples. You can check the <a href="https://apexcharts.com/javascript-chart-demos/" target="_blank">official website</a> for more examples.</p>
-    <section class="section">
-       <div class="row">
-          <div class="col-lg-6">
-             <div class="card">
-                <div class="card-body">
-                   <h5 class="card-title">Line Chart</h5>
-                   <div id="AlineChart"></div>
-                   
-                </div>
-             </div>
-          </div>
-          <div class="col-lg-6">
-             <div class="card">
-                <div class="card-body">
-                   <h5 class="card-title">Area Chart</h5>
-                   <div id="AareaChart"></div> 
-                </div>
-             </div>
-          </div>
-       </div>
-    </section>
+   <div class="container mt-5">
+   <h2 class="mb-3">Historique des achats</h2>
+ 
+   <table class="table table-striped table-bordered">
+     <thead class="table-dark">
+       <tr>
+         <th>ID</th>
+         <th>Fournisseur</th>
+         <th>Produit</th>
+         <th>Quantité</th>
+         <th>Délai de livraison</th>
+         <th>ID Ligne Commande</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let h of historiques">
+         <td>{{ h.id }}</td>
+         <td>{{ h.fournisseur }}</td>
+         <td>{{ h.produit }}</td>
+         <td>{{ h.quantite }}</td>
+         <td>{{ h.delaiLivraison }} jours</td>
+         <td>{{ h.ligneCommande?.id }}</td>
+       </tr>
+     </tbody>
+   </table>
+ 
+   <div *ngIf="historiques.length === 0" class="alert alert-info">
+     Aucun historique d'achat trouvé.
+   </div>
+ </div>
  </main>
+ 

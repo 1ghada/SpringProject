@@ -15,6 +15,10 @@ export class LigneCommandeAchatService {
   getLignesCommandeAchat(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+  getLignesCommandeNonLivrees(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:9090/lignecommandeachats/non-livrees');
+  }
+  
 
   // Créer une nouvelle ligne de commande
   createLigneCommandeAchat(ligneCommandeAchat: any): Observable<any> {

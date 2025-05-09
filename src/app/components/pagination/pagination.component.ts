@@ -31,16 +31,18 @@ export class PaginationComponent implements OnInit {
   }
 
   getLignesCommandes(): void {
-    this.ligneCommandeAchatService.getLignesCommandeAchat().subscribe(
+    this.ligneCommandeAchatService.getLignesCommandeNonLivrees().subscribe(
       (data) => {
         this.lignesCommande = data;
       },
       (error) => {
-        console.error('Erreur lors de la récupération des lignes de commande', error);
+        console.error('Erreur lors de la récupération des lignes de commande non livrées', error);
         this.errorMessage = 'Impossible de charger les lignes de commande.';
       }
     );
   }
+  
+  
 
   onLigneCommandeChange(): void {
     if (this.historiqueAchat.ligneCommande) {

@@ -15,8 +15,9 @@
        >
            <option value="" disabled selected>Sélectionner une ligne de commande</option>
            <option *ngFor="let ligne of lignesCommande" [ngValue]="ligne">
-               {{ ligne.id }} - {{ ligne.produit}}
-           </option>
+            ID: {{ ligne.id }} - Produit: {{ ligne.produit.nom }} - Quantité: {{ ligne.quantite }}
+          </option>
+          
        </select>
    </div>
 

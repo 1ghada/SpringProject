@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LigneCommandeService } from './ligne-commande.service';
+import { LigneCommandeAchatService } from './ligne-commande.service';
 
 describe('LigneCommandeService', () => {
-  let service: LigneCommandeService;
+  let service: LigneCommandeAchatService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LigneCommandeService);
+    service = TestBed.inject(LigneCommandeAchatService);
   });
 
   it('should be created', () => {
