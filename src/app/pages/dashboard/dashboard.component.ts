@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-
+import { HistoriqueAchatService } from 'src/app/services/historique-achat.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,14 +7,17 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private elementRef: ElementRef) { }
+  topFournisseurs: any[] = [];
+
+  constructor(private HistoriqueAchatService: HistoriqueAchatService) {}
 
   ngOnInit(): void {
-
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "../assets/js/main.js";
-    this.elementRef.nativeElement.appendChild(s);
-  }
-
-}
+    this.HistoriqueAchatService.getTop5Fournisseurs().subscribe({
+      next: (data) => {
+        this.topFournisseurs = data;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des fournisseurs :', err);
+      }
+    });
+}}
